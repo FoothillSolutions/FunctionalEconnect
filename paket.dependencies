@@ -1,0 +1,6 @@
+source https://www.nuget.org/api/v2
+nuget FAKE
+nuget FSharp.Core
+nuget Chessie
+github FoothillSolutions/E-ConnectDlls Econnect12.0/Microsoft.Dynamics.GP.eConnect.Serialization.dll
+github FoothillSolutions/E-ConnectDlls Econnect12.0/Microsoft.Dynamics.GP.eConnect.dll

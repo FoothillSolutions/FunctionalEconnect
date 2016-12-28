@@ -16,10 +16,19 @@ let checkLength length x =
         pass x
 
 let failOnNull s = 
-    if String.IsNullOrEmpty(s) then
+    if isNull s then
         fail "Null or empty string" 
     else
         s|> pass 
+
+let failOnEmptyString s = 
+    if String.IsNullOrEmpty s then
+        fail "Null or empty string" 
+    else
+        s|> pass 
+
+
+
 // Check empty or null and return string or warn message
 let warnOnNull s = 
     if String.IsNullOrEmpty(s) then

@@ -11,6 +11,13 @@ module GLTransactionLineInsert
     let validateBatchNotNull  = genericValidator (failOnNull)  (fun (x:G)-> x.BACHNUMB) 
     let validateBatchLength  = genericValidator (checkLength 15) (fun (x:G)-> x.BACHNUMB ) 
 
+    let validateJentryNotEqualDefault  = genericValidator (failOnDefaultValue)  (fun (x:G)-> x.JRNENTRY) 
+   
+    let validateCreditAmountNotEqualDefault  = genericValidator (failOnDefaultValue)  (fun (x:G)-> x.CRDTAMNT) 
+   
+    let validateDebitAmountNotEqualDefault  = genericValidator (failOnDefaultValue)  (fun (x:G)-> x.CRDTAMNT) 
+
+
     let validateAccountLength  (inp:taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert) = genericValidator (checkLength 15) (fun (x:G)-> x.ACTNUMST ) 
 
     let validateAccountNumberLength = genericValidator (checkLength 11 ) (fun (x:G)-> x.ACTNUMST )

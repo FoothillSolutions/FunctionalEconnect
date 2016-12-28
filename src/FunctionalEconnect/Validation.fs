@@ -1,6 +1,7 @@
 module Validation
 open System
 open Chessie.ErrorHandling
+open FSharp.Core
 
 let genericValidator validator getValue elem= 
     trial{
@@ -20,6 +21,13 @@ let failOnNull s =
         fail "Null or empty string" 
     else
         s|> pass 
+
+let failOnDefaultValue<'T when 'T:equality> (x:'T) =
+    let foo =Microsoft.FSharp.Core.Operators.Unchecked.defaultof<'T>
+    if x = foo then
+        fail "defaut value not allowed"
+    else
+        pass x
 
 let failOnEmptyString s = 
     if String.IsNullOrEmpty s then

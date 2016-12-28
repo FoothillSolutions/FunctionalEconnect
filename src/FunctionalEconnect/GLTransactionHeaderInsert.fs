@@ -27,6 +27,8 @@ module op1 =
    
     let validateTransactionDate  =  failOnNull >> bind (checkLength 23)
     let TransactionDateValidaton (inp:G) = validateTransactionDate inp.TRXDATE
+
+    let JentryValidaton (inp:G) = failOnDefaultValue inp.JRNENTRY
     
     let CurrencyIDValidaton (inp:G) = checkLength 15 inp.CURNCYID
     

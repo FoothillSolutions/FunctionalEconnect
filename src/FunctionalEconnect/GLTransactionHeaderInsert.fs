@@ -9,7 +9,7 @@ module GLTransactionHeaderInsert
 open Microsoft.Dynamics.GP.eConnect;
 open Microsoft.Dynamics.GP.eConnect.Serialization;
 open Chessie.ErrorHandling
-open Common;
+open Validation;
 open System
 type GLTransactionHeaderInsert = private GLTransactionHeaderInsert of taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert 
 module op1 =

@@ -45,15 +45,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')">
-      <ItemGroup>
-        <Reference Include="Chessie">
-          <HintPath>..\..\packages\Chessie\lib\net40\Chessie.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6' Or $(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3')" />
     <When Condition="($(TargetFrameworkIdentifier) == '.NETStandard' And $(TargetFrameworkVersion) == 'v1.6') Or ($(TargetFrameworkIdentifier) == '.NETCoreApp' And $(TargetFrameworkVersion) == 'v1.0')">
       <ItemGroup>
         <Reference Include="Chessie">
@@ -1028,6 +1020,15 @@
     <Compile Include="GLTransactionLineInsert.fs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Chessie">
+      <HintPath>..\..\..\..\..\..\Downloads\Chessie-master\Chessie-master\bin\Chessie.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.GP.eConnect">
+      <HintPath>..\..\..\..\..\..\Downloads\Econnect 12.0\Econnect 12.0\Microsoft.Dynamics.GP.eConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamics.GP.eConnect.Serialization">
+      <HintPath>..\..\..\..\..\..\Downloads\Econnect 12.0\Econnect 12.0\Microsoft.Dynamics.GP.eConnect.Serialization.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
@@ -1035,15 +1036,5 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
-    <Reference Include="Microsoft.Dynamics.GP.eConnect.Serialization">
-      <HintPath>..\..\paket-files\FoothillSolutions\E-ConnectDlls\Econnect12.0\Microsoft.Dynamics.GP.eConnect.Serialization.dll</HintPath>
-      <Private>True</Private>
-      <Paket>True</Paket>
-    </Reference>
-    <Reference Include="Microsoft.Dynamics.GP.eConnect">
-      <HintPath>..\..\paket-files\FoothillSolutions\E-ConnectDlls\Econnect12.0\Microsoft.Dynamics.GP.eConnect.dll</HintPath>
-      <Private>True</Private>
-      <Paket>True</Paket>
-    </Reference>
   </ItemGroup>
 </Project>

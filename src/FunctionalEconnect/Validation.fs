@@ -2,8 +2,6 @@ module Validation
 open System
 open Chessie.ErrorHandling
 
-
-
 let genericValidator validator getValue elem= 
     trial{
      let! res = validator <| getValue elem 

@@ -16,10 +16,60 @@ module op1 =
 // partial function for length alidation
     let ValidateStringLength (len:int) =  checkLength len
 
-    let validateBatch  =  warnOnNull >> bind (ValidateStringLength 15)
+    let validateBatch  =  failOnNull >> bind (ValidateStringLength 15)
     let BatchValidaton (inp:taGLTransactionHeaderInsert) = validateBatch inp.BACHNUMB
     let validateAccountNumber str = lift Some ((ValidateStringLength 11 str))
+    
+ 
+    let validateRefrence  =  failOnNull >> bind (ValidateStringLength 30)
+    let RefrenceValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.REFRENCE
+   
+    let validateTransactionDate  =  failOnNull >> bind (ValidateStringLength 23)
+    let TransactionDateValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.TRXDATE
+    
+    let CurrencyIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.CURNCYID
+    
+    let ExchangeRateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 21 inp.XCHGRATE
+    
+    let RateTypeIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.RATETPID
+  
+    let ExpirationDateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.EXPNDATE
+  
+    let ExchangeDateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.EXCHDATE
+  
+    let ExchangeIDDescriptionValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 30 inp.EXGTBDSC
 
+    let ExchangeRateSourceValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.EXTBLSRC
+
+    let Time1Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.TIME1
+
+    let SourceDocumentValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 11 inp.SOURCDOC
+    
+    let UserIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.USERID
+    
+    let NoteTextValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.NOTETEXT
+   
+    let validateUserDefinedField1Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND1
+    let validateUserDefinedField2Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND2
+    let validateUserDefinedField3Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND3
+    let validateUserDefinedField4Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.USRDEFND4
+    let validateUserDefinedField5Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.USRDEFND5
+
+    
+
+    
+
+    
+
+
+    
+
+    
+    
+
+    
+
+    
 
 
     let createGLTransactionLine (x:taGLTransactionHeaderInsert) : Result<GLTransactionHeaderInsert ,string> =

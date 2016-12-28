@@ -5,13 +5,12 @@ open Chessie.ErrorHandling
 
 
 let genericValidator validator getValue elem= 
-    pass elem
-
-let validateString15 (value) = 
-        pass value
-
-let stringNullValidation (value)  = 
-        pass value
+    trial{
+     let! res = validator <| getValue 
+     return elem
+    } 
+    
+  
 
 
 let checkLength length x = 

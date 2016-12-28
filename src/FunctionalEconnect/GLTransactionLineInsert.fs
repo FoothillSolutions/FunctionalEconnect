@@ -7,7 +7,6 @@ module GLTransactionLineInsert
     type G = taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert
     type T = private GLTransactionLineInsert of taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert 
 
-
     
     let validateBatchNotNull  = genericValidator (failOnNull)  (fun (x:G)-> x.BACHNUMB) 
     let validateBatchLength  = genericValidator (checkLength 15) (fun (x:G)-> x.BACHNUMB ) 

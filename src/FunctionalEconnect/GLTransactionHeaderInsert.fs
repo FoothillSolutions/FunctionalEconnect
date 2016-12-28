@@ -11,49 +11,50 @@ open Microsoft.Dynamics.GP.eConnect.Serialization;
 open Chessie.ErrorHandling
 open Validation;
 open System
+type private G = taGLTransactionHeaderInsert
 type GLTransactionHeaderInsert = private GLTransactionHeaderInsert of taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert 
 module op1 =
 // partial function for length alidation
-    let ValidateStringLength (len:int) =  checkLength len
 
-    let validateBatch  =  failOnNull >> bind (ValidateStringLength 15)
-    let BatchValidaton (inp:taGLTransactionHeaderInsert) = validateBatch inp.BACHNUMB
-    let validateAccountNumber str = lift Some ((ValidateStringLength 11 str))
+        
+    let validateBatch  =  failOnNull >> bind (checkLength 15)
+    let BatchValidaton (inp:G) = validateBatch inp.BACHNUMB
+    let validateAccountNumber str = lift Some ((checkLength 11 str))
     
  
-    let validateRefrence  =  failOnNull >> bind (ValidateStringLength 30)
-    let RefrenceValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.REFRENCE
+    let validateRefrence  =  failOnNull >> bind (checkLength 30)
+    let RefrenceValidaton (inp:G) = validateRefrence inp.REFRENCE
    
-    let validateTransactionDate  =  failOnNull >> bind (ValidateStringLength 23)
-    let TransactionDateValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.TRXDATE
+    let validateTransactionDate  =  failOnNull >> bind (checkLength 23)
+    let TransactionDateValidaton (inp:G) = validateTransactionDate inp.TRXDATE
     
-    let CurrencyIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.CURNCYID
+    let CurrencyIDValidaton (inp:G) = checkLength 15 inp.CURNCYID
     
-    let ExchangeRateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 21 inp.XCHGRATE
+    let ExchangeRateValidaton (inp:G) = checkLength 21 inp.XCHGRATE
     
-    let RateTypeIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.RATETPID
+    let RateTypeIDValidaton (inp:G) = checkLength 15 inp.RATETPID
   
-    let ExpirationDateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.EXPNDATE
+    let ExpirationDateValidaton (inp:G) = checkLength 23 inp.EXPNDATE
   
-    let ExchangeDateValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.EXCHDATE
+    let ExchangeDateValidaton (inp:G) = checkLength 23 inp.EXCHDATE
   
-    let ExchangeIDDescriptionValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 30 inp.EXGTBDSC
+    let ExchangeIDDescriptionValidaton (inp:G) = checkLength 30 inp.EXGTBDSC
 
-    let ExchangeRateSourceValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.EXTBLSRC
+    let ExchangeRateSourceValidaton (inp:G) = checkLength 50 inp.EXTBLSRC
 
-    let Time1Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 23 inp.TIME1
+    let Time1Validaton (inp:G) = checkLength 23 inp.TIME1
 
-    let SourceDocumentValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 11 inp.SOURCDOC
+    let SourceDocumentValidaton (inp:G) = checkLength 11 inp.SOURCDOC
     
-    let UserIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.USERID
+    let UserIDValidaton (inp:G) = checkLength 15 inp.USERID
     
-    let NoteTextValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.NOTETEXT
+    let NoteTextValidaton (inp:G) = checkLength 8000 inp.NOTETEXT
    
-    let validateUserDefinedField1Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND1
-    let validateUserDefinedField2Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND2
-    let validateUserDefinedField3Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 50 inp.USRDEFND3
-    let validateUserDefinedField4Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.USRDEFND4
-    let validateUserDefinedField5Validaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 8000 inp.USRDEFND5
+    let validateUserDefinedField1Validaton (inp:G) = checkLength 50 inp.USRDEFND1
+    let validateUserDefinedField2Validaton (inp:G) = checkLength 50 inp.USRDEFND2
+    let validateUserDefinedField3Validaton (inp:G) = checkLength 50 inp.USRDEFND3
+    let validateUserDefinedField4Validaton (inp:G) = checkLength 8000 inp.USRDEFND4
+    let validateUserDefinedField5Validaton (inp:G) = checkLength 8000 inp.USRDEFND5
 
     
 
@@ -72,7 +73,7 @@ module op1 =
     
 
 
-    let createGLTransactionLine (x:taGLTransactionHeaderInsert) : Result<GLTransactionHeaderInsert ,string> =
+    let createGLTransactionLine (x:G) : Result<GLTransactionHeaderInsert ,string> =
             trial {        
             let! listRes =                      
                 [BatchValidaton]

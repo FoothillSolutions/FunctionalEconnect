@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FunctionalEconnect.Test", "src\FunctionalEconnect.Test\FunctionalEconnect.Test.fsproj", "{1E5A1CF9-ED9F-4074-8855-BD22700772FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{665E552A-D0A9-432F-B342-75E9A51BE6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{665E552A-D0A9-432F-B342-75E9A51BE6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{665E552A-D0A9-432F-B342-75E9A51BE6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5A1CF9-ED9F-4074-8855-BD22700772FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5A1CF9-ED9F-4074-8855-BD22700772FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5A1CF9-ED9F-4074-8855-BD22700772FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5A1CF9-ED9F-4074-8855-BD22700772FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

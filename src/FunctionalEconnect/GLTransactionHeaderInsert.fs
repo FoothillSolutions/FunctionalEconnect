@@ -25,7 +25,7 @@ module op1 =
     let RefrenceValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.REFRENCE
    
     let validateTransactionDate  =  failOnNull >> bind (ValidateStringLength 23)
-    let TransactionDateValidaton (inp:taGLTransactionHeaderInsert) = validateRefrence inp.TRXDATE
+    let TransactionDateValidaton (inp:taGLTransactionHeaderInsert) = validateTransactionDate inp.TRXDATE
     
     let CurrencyIDValidaton (inp:taGLTransactionHeaderInsert) = ValidateStringLength 15 inp.CURNCYID
     

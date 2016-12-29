@@ -1,10 +1,27 @@
 NUGET
   remote: https://www.nuget.org/api/v2
+    Argu (3.7)
+      FSharp.Core (>= 4.0.1.7-alpha) - framework: >= net463, >= netstandard16
+      NETStandard.Library (>= 1.6) - framework: >= net463, >= netstandard16
+      System.Xml.XDocument (>= 4.0.11) - framework: >= net463, >= netstandard16
     Chessie (0.6)
       FSharp.Core  - framework: >= net10, netstandard10, netstandard11, netstandard12, netstandard13, netstandard14, netstandard15
       FSharp.Core (>= 4.0.1.7-alpha) - framework: >= netstandard16
       NETStandard.Library (>= 1.6) - framework: >= netstandard16
+    Expecto (2.3)
+      Argu (>= 3.2)
+      FSharp.Core (>= 3.1.2.5)
+    Expecto.FsCheck (2.3)
+      Expecto (>= 2.3)
+      FsCheck (>= 2.6.2)
+      FSharp.Core (>= 3.1.2.5)
+    Expecto.PerfUtil (1.0.12)
+      Expecto (>= 1.0.12)
+      FSharp.Core (>= 3.1.2.5)
+      PerfUtil (>= 0.1.8)
     FAKE (4.46)
+    FsCheck (2.6.2)
+      FSharp.Core (>= 3.1.2.5)
     FSharp.Core (4.0.1.7-alpha)
       Microsoft.NETCore.Platforms (>= 1.0.1) - framework: >= net463, >= netstandard16
       NETStandard.Library (>= 1.6) - framework: >= net463, >= netstandard16
@@ -68,6 +85,7 @@ NUGET
       System.Threading.Timer (>= 4.3) - framework: >= net451, >= netstandard12
       System.Xml.ReaderWriter (>= 4.3) - framework: >= netstandard10
       System.Xml.XDocument (>= 4.3) - framework: >= netstandard10
+    PerfUtil (0.1.8)
     runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3) - framework: >= net463, >= netstandard16
     runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3) - framework: >= net463, >= netstandard16
     runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl (4.3) - framework: >= net463, >= netstandard16

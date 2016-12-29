@@ -1,4 +1,7 @@
 source https://www.nuget.org/api/v2
+nuget Expecto
+nuget Expecto.PerfUtil
+nuget Expecto.FsCheck
 nuget FAKE
 nuget FSharp.Core
 nuget Chessie

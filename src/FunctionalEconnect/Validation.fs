@@ -12,12 +12,12 @@ let genericValidator validator getValue elem=
 
 let checkLength length x = 
     if x.ToString().Length > length then  
-        fail  (sprintf "exeeds length of %i" length)
+        fail  (sprintf "exceeds length of %i" length)
     else 
         pass x
 
 let failOnNull s = 
-    if isNull s then
+    if String.IsNullOrEmpty s then
         fail "Null or empty string" 
     else
         s|> pass 

@@ -11,6 +11,7 @@ open Microsoft.Dynamics.GP.eConnect.Serialization;
 open Chessie.ErrorHandling
 open Validation;
 open System
+open GLTransaction
 type private G = taGLTransactionHeaderInsert
 type GLTransactionHeaderInsert = private GLTransactionHeaderInsert of taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert 
 module op1 =
@@ -58,29 +59,12 @@ module op1 =
     let validateUserDefinedField4Validaton (inp:G) = checkLength 8000 inp.USRDEFND4
     let validateUserDefinedField5Validaton (inp:G) = checkLength 8000 inp.USRDEFND5
 
-    
-
-    
-
-    
-
-
-    
-
-    
-    
-
-    
-
-    
-
-
     let createGLTransactionLine (x:G) : Result<GLTransactionHeaderInsert ,string> =
             trial {        
             let! listRes =                      
                 [BatchValidaton]
-                |>  List.map(fun f -> f x)
-                |>collect
+                |> List.map(fun f -> f x)
+                |> collect
             let z = taGLTransactionLineInsert_ItemsTaGLTransactionLineInsert()
             //z.BACHNUMB<- x.Batch
             return GLTransactionHeaderInsert z
@@ -118,7 +102,7 @@ module op2 =
         type GLHeader (batchNumber:string,journalEntryNumber:int,reference:string,transactionDate:DateTime, transactionType:int)=
             let validateStringLength (len:int) =  checkLength len
             
-            let validateProperty fatalValidation errorValidation   x=  trial { 
+            let validateProperty fatalValidation errorValidation x=  trial { 
                 // required to fail fast if result is null
                let! fail= fatalValidation x 
                let! results=             
@@ -128,11 +112,12 @@ module op2 =
                     
             return results.Head
                 }
-            member val batchNumber=batchNumber |> validateProperty failOnNull [(validateStringLength 10) ;(validateStringLength 111) ;(validateStringLength 12)]                                                       
-            member val JournalEntryNumber= journalEntryNumber 
-            member val Reference= reference
-            member val TransactionDate = transactionDate
-            member val TransactionType= transactionType
+            member val batchNumber=batchNumber |> validateProperty failOnNull [(validateStringLength 15) ;(validateStringLength 111) ;(validateStringLength 12)]                                                       
+            member val JournalEntryNumber= journalEntryNumber  |> validateProperty failOnDefaultValue []
+            member val Reference= reference |> validateProperty failOnNull [(validateStringLength 30)]
+            member val TransactionDate = transactionDate.ToShortDateString() |> validateProperty failOnNull [(validateStringLength 23)]
+            
+            member val TransactionType= GetTransactionType
         
 
         let x= new GLHeader(null,12,"ref",DateTime.Now,1)  

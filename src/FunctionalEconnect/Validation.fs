@@ -17,8 +17,11 @@ let checkLength length x =
         pass x
 
 let failOnNull s = 
-    if String.IsNullOrEmpty s then
-        fail "Null or empty string" 
+
+    let nullCheck  = match box s with null -> true | _ -> false
+
+    if nullCheck then
+        fail "Null refernce" 
     else
         s|> pass 
 

@@ -20,6 +20,7 @@ module op1 =
         
     let validateBatch  =  failOnNull >> bind (checkLength 15)
     let BatchValidaton (inp:G) = validateBatch inp.BACHNUMB
+    
     let validateAccountNumber str = lift Some ((checkLength 11 str))
     
  
